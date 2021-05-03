@@ -1,0 +1,11 @@
+#########################
+## zTags made by Zowpy ##
+#########################
+
+mongodb:
+  uri: ""
+  database: "tags"
+
+# supports placeholders
+# NOTE: PLACEHOLDERS ONLY WORK IF THEY EXIST.
+chat-format: "<tag> <player>&f: <message>"

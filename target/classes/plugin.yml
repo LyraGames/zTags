@@ -1,0 +1,7 @@
+name: Tags
+version: 1.0-SNAPSHOT
+main: me.zowpy.ztags.Tags
+authors: [ Zowpy ]
+commands:
+  tags:
+  tag:

@@ -1,0 +1,7 @@
+name: Tags
+version: ${project.version}
+main: me.zowpy.ztags.Tags
+authors: [ Zowpy ]
+commands:
+  tags:
+  tag:

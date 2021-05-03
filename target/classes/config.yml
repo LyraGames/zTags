@@ -1,0 +1,10 @@
+#########################
+## zTags made by Zowpy ##
+#########################
+
+mongodb:
+  uri: ""
+  database: "tags"
+
+# supports placeholders
+chat-format: "<tag> %rank_prefix% <player>&f: <message>"
