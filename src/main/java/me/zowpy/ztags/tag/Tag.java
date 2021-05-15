@@ -16,7 +16,7 @@ public class Tag {
     private String name;
     private String prefix;
     private String permission;
-    private static Document tagDocument;
+    private Document tagDocument;
 
     public Tag(String id, String name, String prefix, String permission) {
         this.id = id;

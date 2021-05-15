@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
@@ -21,10 +22,9 @@ public class ProfileHandler implements Listener {
     private static List<Profile> profiles = new ArrayList<>();
 
     @EventHandler
-    public void on(PlayerJoinEvent e) {
+    public void on(PlayerLoginEvent e) {
         Player player = e.getPlayer();
-
-        // :(
+        
         if (Tags.getProfile().find(new Document("_id", player.getUniqueId().toString())).first() == null) {
             Profile profile = new Profile(player.getUniqueId(), null);
             profile.create();

@@ -17,7 +17,7 @@ public class Profile {
 
     private UUID player;
     private Tag tag;
-    private static Document profileDocument;
+    private Document profileDocument;
 
     public Profile(UUID player, Tag tag) {
         this.player = player;
