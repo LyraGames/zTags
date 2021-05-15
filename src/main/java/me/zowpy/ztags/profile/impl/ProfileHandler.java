@@ -24,7 +24,7 @@ public class ProfileHandler implements Listener {
     @EventHandler
     public void on(PlayerLoginEvent e) {
         Player player = e.getPlayer();
-        
+
         if (Tags.getProfile().find(new Document("_id", player.getUniqueId().toString())).first() == null) {
             Profile profile = new Profile(player.getUniqueId(), null);
             profile.create();

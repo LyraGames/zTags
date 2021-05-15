@@ -7,4 +7,5 @@ mongodb:
   database: "tags"
 
 # supports placeholders
-chat-format: "<tag> %rank_prefix% <player>&f: <message>"
+# NOTE: PLACEHOLDERS ONLY WORK IF THEY EXIST.
+chat-format: "<tag> <player>&f: <message>"
