@@ -1,2 +1,2 @@
 # zTags
- a tag plugin
+ A mongo based tags plugin
