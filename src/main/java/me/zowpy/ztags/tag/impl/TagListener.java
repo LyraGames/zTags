@@ -20,6 +20,9 @@ public class TagListener implements Listener {
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             String format = Tags.getInstance().getConfig().getString("chat-format");
             e.setFormat(Color.translate(PlaceholderAPI.setPlaceholders(player, format.replace("<player>", player.getName()).replace("<tag>", profile.getTag() != null ? Color.translate(profile.getTag().getPrefix()) : "").replace("<message>", e.getMessage()))));
+        }else {
+            String format = Tags.getInstance().getConfig().getString("chat-format");
+            e.setFormat(Color.translate(format.replace("<player>", player.getName()).replace("<tag>", profile.getTag() != null ? Color.translate(profile.getTag().getPrefix()) : "").replace("<message>", e.getMessage())));
         }
     }
 }

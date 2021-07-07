@@ -11,6 +11,7 @@ import me.zowpy.ztags.profile.impl.ProfileHandler;
 import me.zowpy.ztags.tag.impl.TagHandler;
 import me.zowpy.ztags.tag.impl.TagListener;
 import me.zowpy.ztags.utils.Color;
+import me.zowpy.ztags.utils.ConfigFile;
 import me.zowpy.ztags.utils.menu.ButtonListener;
 import me.zowpy.ztags.utils.menu.MenuUpdateTask;
 import org.bson.Document;
@@ -32,6 +33,8 @@ public final class Tags extends JavaPlugin {
     @Getter private static MongoCollection<Document> tags;
     @Getter private static Executor mongoExecutor;
     @Getter private static TagHandler tagHandler;
+    @Getter private static ConfigFile tagFile;
+
 
     @Override
     public void onEnable() {
@@ -39,6 +42,8 @@ public final class Tags extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+
+         tagFile = new ConfigFile("tags", this);
 
         RANDOM = new Random();
 

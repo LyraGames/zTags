@@ -9,16 +9,18 @@ import me.zowpy.ztags.tag.impl.TagHandler;
 import org.bson.Document;
 import org.bukkit.ChatColor;
 
+import java.util.UUID;
+
 @Getter
 public class Tag {
 
-    private String id;
+    private UUID id;
     private String name;
     private String prefix;
     private String permission;
     private Document tagDocument;
 
-    public Tag(String id, String name, String prefix, String permission) {
+    public Tag(UUID id, String name, String prefix, String permission) {
         this.id = id;
         this.name = name;
         this.prefix = prefix;
@@ -33,16 +35,16 @@ public class Tag {
 
     public void setName(String name) {
         this.name = name;
-        Document tag = Tags.getTags().find(new Document("_id", id)).first();
+        Document tag = Tags.getTags().find(new Document("_id", id.toString())).first();
         tag.put("name", name);
-        Tags.getMongoExecutor().execute(() -> Tags.getTags().replaceOne(Filters.eq("_id", id), tag, new ReplaceOptions().upsert(true)));
+        Tags.getMongoExecutor().execute(() -> Tags.getTags().replaceOne(Filters.eq("_id", id.toString()), tag, new ReplaceOptions().upsert(true)));
     }
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
-        Document tag = Tags.getTags().find(new Document("_id", id)).first();
+        Document tag = Tags.getTags().find(new Document("_id", id.toString())).first();
         tag.put("prefix", prefix);
-        Tags.getMongoExecutor().execute(() -> Tags.getTags().replaceOne(Filters.eq("_id", id), tag, new ReplaceOptions().upsert(true)));
+        Tags.getMongoExecutor().execute(() -> Tags.getTags().replaceOne(Filters.eq("_id", id.toString()), tag, new ReplaceOptions().upsert(true)));
     }
 
     public static Tag getByName(String name) {
@@ -50,6 +52,6 @@ public class Tag {
     }
 
     public static Tag getById(String id) {
-        return TagHandler.getTags().stream().filter(tag -> tag.getId().equals(id)).findFirst().orElse(null);
+        return TagHandler.getTags().stream().filter(tag -> tag.getId().toString().equals(id)).findFirst().orElse(null);
     }
 }
