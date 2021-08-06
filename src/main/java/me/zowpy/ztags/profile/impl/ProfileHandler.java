@@ -19,7 +19,7 @@ import java.util.List;
 public class ProfileHandler implements Listener {
 
     @Getter
-    private static List<Profile> profiles = new ArrayList<>();
+    private static final List<Profile> profiles = new ArrayList<>();
 
     @EventHandler
     public void on(PlayerLoginEvent e) {
@@ -31,17 +31,11 @@ public class ProfileHandler implements Listener {
             profiles.add(profile);
         }else {
             Document doc = Tags.getProfile().find(new Document("_id", player.getUniqueId().toString())).first();
-            Profile profile = new Profile(player.getUniqueId(), Tag.getById(doc.getString("tag")));
-            profiles.add(profile);
+            if (Profile.getByUUID(player.getUniqueId()) == null) {
+                Profile profile = new Profile(player.getUniqueId(), doc.getString("tag").equalsIgnoreCase("null") ? null : Tag.getById(doc.getString("tag")));
+                profiles.add(profile);
+            }
         }
-    }
-
-    @EventHandler
-    public void on(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-
-        Profile profile = Profile.getByUUID(player.getUniqueId());
-        profiles.remove(profile);
     }
 
 }

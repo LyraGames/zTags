@@ -7,7 +7,9 @@ import com.mongodb.client.MongoDatabase;
 import lombok.Getter;
 import me.zowpy.ztags.command.TagCommand;
 import me.zowpy.ztags.command.TagsCommand;
+import me.zowpy.ztags.profile.Profile;
 import me.zowpy.ztags.profile.impl.ProfileHandler;
+import me.zowpy.ztags.tag.Tag;
 import me.zowpy.ztags.tag.impl.TagHandler;
 import me.zowpy.ztags.tag.impl.TagListener;
 import me.zowpy.ztags.utils.Color;
@@ -52,8 +54,8 @@ public final class Tags extends JavaPlugin {
         try {
             connect();
         } catch (Exception var2) {
-            sender.sendMessage(Color.translate("&cFailed to connect to the database &7(MongoDB)"));
             var2.printStackTrace();
+            sender.sendMessage(Color.translate("&cFailed to connect to the database &7(MongoDB)"));
         }
 
         mongoExecutor = Executors.newFixedThreadPool(1);
@@ -62,13 +64,23 @@ public final class Tags extends JavaPlugin {
         tagHandler.getLoader().load();
 
         register();
-        MenuUpdateTask menuUpdateTask = new MenuUpdateTask();
+        new MenuUpdateTask();
 
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        for (Profile profile : ProfileHandler.getProfiles()) {
+            profile.save();
+        }
+
+        for (Tag tag : TagHandler.getTags()) {
+            tag.save();
+        }
+
+        tagHandler.export();
+
+        instance = null;
     }
 
     private void register() {

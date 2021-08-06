@@ -1,4 +1,3 @@
-me\zowpy\ztags\utils\SaltUtil.class
 me\zowpy\ztags\utils\menu\buttons\Glass.class
 me\zowpy\ztags\utils\menu\buttons\CloseButton.class
 me\zowpy\ztags\command\TagsCommand.class
@@ -18,6 +17,7 @@ me\zowpy\ztags\utils\ItemBuilder.class
 me\zowpy\ztags\utils\menu\Menu$1.class
 me\zowpy\ztags\tag\impl\TagLoader.class
 me\zowpy\ztags\utils\menu\pagination\JumpToPageButton.class
+me\zowpy\ztags\utils\ConfigFile.class
 me\zowpy\ztags\utils\menu\pagination\PaginatedMenu$1.class
 me\zowpy\ztags\utils\menu\TypeCallback.class
 me\zowpy\ztags\utils\menu\buttons\DisplayButton.class

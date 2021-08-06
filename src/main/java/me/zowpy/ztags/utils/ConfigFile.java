@@ -18,6 +18,10 @@ public class ConfigFile {
     public ConfigFile(String fileName, JavaPlugin plugin) {
         file = new File(plugin.getDataFolder(), fileName + ".yml");
 
+        if (!plugin.getDataFolder().exists()) {
+            plugin.getDataFolder().mkdir();
+        }
+
         if (!file.exists()) {
             file.createNewFile();
             plugin.saveResource(fileName + ".yml", true);

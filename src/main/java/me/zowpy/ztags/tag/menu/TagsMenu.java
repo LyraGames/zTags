@@ -27,7 +27,7 @@ public class TagsMenu extends PaginatedMenu {
     }
 
     @Override
-    public boolean isAutoUpdate() {
+    public boolean isUpdateAfterClick() {
         return true;
     }
 
@@ -114,6 +114,7 @@ public class TagsMenu extends PaginatedMenu {
 
                             if (prof.getTag() != tag) {
                                 prof.setTag(tag);
+                                prof.save();
                                 player.sendMessage(CC.PRIMARY + "You have successfully set your tag to " + CC.SECONDARY + tag.getName());
                                 return;
                             }
@@ -159,6 +160,7 @@ public class TagsMenu extends PaginatedMenu {
                 }
 
                 profile.setTag(null);
+                profile.save();
                 player.sendMessage(CC.PRIMARY + "Successfully cleared your tag!");
             }
 
