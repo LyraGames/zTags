@@ -1,6 +1,6 @@
 name: Tags
 version: ${project.version}
-main: me.zowpy.ztags.Tags
+main: net.lyragames.ztags.Tags
 authors: [ Zowpy ]
 commands:
   tags:
