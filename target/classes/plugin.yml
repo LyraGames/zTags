@@ -1,6 +1,6 @@
 name: Tags
 version: 1.0-SNAPSHOT
-main: me.zowpy.ztags.Tags
+main: net.lyragames.ztags.Tags
 authors: [ Zowpy ]
 commands:
   tags:

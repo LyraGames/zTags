@@ -2,6 +2,8 @@ package net.lyragames.ztags;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import lombok.Getter;
@@ -22,6 +24,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collections;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -93,7 +96,15 @@ public final class Tags extends JavaPlugin {
     }
 
     private void connect() {
-        client = new MongoClient(new MongoClientURI(getConfig().getString("mongodb.uri")));
+        if (getConfig().getBoolean("mongodb.use-uri")) {
+            client = new MongoClient(new MongoClientURI(getConfig().getString("mongodb.uri")));
+        }else {
+            if (getConfig().getBoolean("mongodb.authentication.enabled")) {
+                client = new MongoClient(new ServerAddress(getConfig().getString("mongodb.host"), getConfig().getInt("mongodb.port")), Collections.singletonList(MongoCredential.createCredential(getConfig().getString("mongodb.authentication.username"), getConfig().getString("mongodb.authentication.database"), getConfig().getString("mongodb.authentication.password").toCharArray())));
+            }else {
+                client = new MongoClient(new ServerAddress(getConfig().getString("mongodb.host"), getConfig().getInt("mongodb.port")));
+            }
+        }
         mongoDatabase = client.getDatabase(getConfig().getString("mongodb.database"));
         profile = mongoDatabase.getCollection("profiles");
         tags = mongoDatabase.getCollection("tags");

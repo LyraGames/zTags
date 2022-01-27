@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="zTags:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/zTags_jar</output-path>
+    <root id="archive" name="zTags.jar">
+      <element id="module-output" name="zTags" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.12.8/mongo-java-driver-3.12.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/cryptomorin/XSeries/7.9.1.1/XSeries-7.9.1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

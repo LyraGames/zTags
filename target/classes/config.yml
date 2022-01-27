@@ -3,8 +3,17 @@
 #########################
 
 mongodb:
+  use-uri: false
   uri: ""
-  database: "tags"
+  host: "127.0.0.1"
+  port: 27017
+  database: "ztag"
+  authentication:
+    enabled: false
+    username: ""
+    password: ""
+    database: "admin"
+
 
 # supports placeholders
 # NOTE: PLACEHOLDERS ONLY WORK IF THEY EXIST.
